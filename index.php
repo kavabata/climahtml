@@ -21,7 +21,7 @@ include('db.php');
         .light_status {
             float: left;
             width: 20%;
-            padding: 60px;
+            padding: 0 60px 20px 60px;
         }
         .light_status .message{
             font-weight: bold;
@@ -38,7 +38,8 @@ include('db.php');
             width: 70%;
         }
         .last_view img{
-            max-height: 400px;
+            max-height: 500px;
+            height: 500px;
         }
         .clear{
             clear: both;
@@ -58,7 +59,16 @@ include('db.php');
             <span class="message <?php echo $l['class'];?>"><?php echo $l['message'];?></span>
             <i>(<?php echo $l['created'];?>)</i>
         </span><br/>
-    <?php } ?>
+    <?php } ?><br><br>
+
+    <?php while ($row = $log_result->fetch_object()){ ?>
+        <span>
+            <span class="message"><?php echo $row->action;?></span>:
+            <span><?php echo $row->message;?></span>
+            <i>(<?php echo $row->created;?>)</i>
+        </span>
+
+    <?php  } ?>
     </div>
 
     <div class="last_view">

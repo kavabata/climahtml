@@ -89,17 +89,17 @@ while ($row = $water_result->fetch_object()){
 }
 
 $light_query = "select 
-    max(l.id) as id, 
-    l.action, 
-    max(l.created) as created,
-    l2.message 
-from logs l
-join logs l2 on l2.id = l.id
+    max(p.id) as id, 
+    p.action, 
+    max(p.created) as created,
+    p2.message 
+from pins p
+join pins p2 on p2.id = p.id
 group by action;";
 $light_result = $db->query($light_query);
 $light_data = [];
 while ($row = $light_result->fetch_object()){
-    if (in_array($row->message, ['OPEN', 'HIGH']) || substr($row->message,0,2) == 'ON') {
+    if (in_array($row->message, ['OPEN', 'HIGH', 'ON']) || substr($row->message,0,2) == 'ON') {
         $class = 'green';
     } else if (in_array($row->message, ['CLOSE', 'OFF','LOW'])) {
         $class = 'red';
@@ -114,3 +114,16 @@ while ($row = $light_result->fetch_object()){
         'created' => $row->created
     ];
 }
+
+
+$log_query = "select
+    l.id,
+    l.action,
+     l.message,
+    l.created 
+from logs l
+order by created DESC 
+limit 30";
+$log_result = $db->query($log_query);
+
+
