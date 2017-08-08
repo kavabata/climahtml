@@ -21,6 +21,7 @@ if (is_dir($dir)) {
 
 $shot['src'] = 'http://fastaccess.ddns.net/cam/' . $folder . '/'. $resultname . '.jpg';
 $shot['title'] = 'Taken on ' .substr($resultname,0,2) . ':' . substr($resultname,2);
+$shot['time'] = $resultname;
 
 $video['href'] = 'http://fastaccess.ddns.net/cam/' . $v . '.mp4';
 

@@ -20,8 +20,7 @@ include('db.php');
         }
         .light_status {
             float: left;
-            width: 20%;
-            padding: 0 60px 20px 60px;
+            width: 25%;
         }
         .light_status .message{
             font-weight: bold;
@@ -53,20 +52,33 @@ include('db.php');
     <h3> Welcomen to clima v.0.1 </h3>
     <h4> Lets control</h4>
 
+    <div id="timeV"></div>
+    <script>
+
+
+      var date = new Date(<?php echo time();?>*1000);
+      // Hours part from the timestamp
+      var hours = date.getHours();
+      // Minutes part from the timestamp
+      var minutes = date.getMinutes();
+
+      document.getElementById("timeV").innerHTML = (hours > 9 ? '' : '0') + hours + ':' + (minutes > 9 ? '' : '0') + minutes;
+    </script>
+
     <div class="light_status">
     <?php foreach ($light_data as $l) {?>
         <span><?php echo $l['action'];?>:
             <span class="message <?php echo $l['class'];?>"><?php echo $l['message'];?></span>
-            <i>(<?php echo $l['created'];?>)</i>
+            <small><i>(<?php echo $l['created'];?>)</i></small>
         </span><br/>
     <?php } ?><br><br>
 
     <?php while ($row = $log_result->fetch_object()){ ?>
         <span>
             <span class="message"><?php echo $row->action;?></span>:
-            <span><?php echo $row->message;?></span>
-            <i>(<?php echo $row->created;?>)</i>
-        </span>
+            <span><?php echo $row->message;?></span><br>
+            <small><i>(<?php echo $row->created;?>)</i></small>
+        </span><br><br>
 
     <?php  } ?>
     </div>
@@ -78,11 +90,20 @@ include('db.php');
     <div class="clear"></div>
 
     <div class="climat graph">
-        <canvas id="climatChart" width="800" height="200"></canvas>
+        <h3>Latest Results</h3>
+        <canvas id="climatChart1a" width="800" height="100"></canvas>
+        <canvas id="climatChart2a" width="800" height="100"></canvas>
+        <h3>Average Results</h3>
+        <canvas id="climatChart1" width="800" height="100"></canvas>
+        <canvas id="climatChart2" width="800" height="100"></canvas>
     </div>
 
     <div class="water graph">
-        <canvas id="waterChart" width="800" height="200"></canvas>
+        <h3>Water Inside</h3>
+        <canvas id="waterChart1" width="800" height="50"></canvas>
+        <canvas id="waterChart2" width="800" height="50"></canvas>
+        <canvas id="waterChart3" width="800" height="50"></canvas>
+        <canvas id="waterChart4" width="800" height="50"></canvas>
     </div>
 
     <div class="light graph">
@@ -92,14 +113,21 @@ include('db.php');
 </div>
 
 <script>
-  var ctx_clima = document.getElementById("climatChart").getContext('2d');
-  var ctx_water = document.getElementById("waterChart").getContext('2d');
+  var ctx_clima1 = document.getElementById("climatChart1").getContext('2d');
+  var ctx_clima1a = document.getElementById("climatChart1a").getContext('2d');
+  var ctx_clima2 = document.getElementById("climatChart2").getContext('2d');
+  var ctx_clima2a = document.getElementById("climatChart2a").getContext('2d');
+  var ctx_water1 = document.getElementById("waterChart1").getContext('2d');
+  var ctx_water2 = document.getElementById("waterChart2").getContext('2d');
+  var ctx_water3 = document.getElementById("waterChart3").getContext('2d');
+  var ctx_water4 = document.getElementById("waterChart4").getContext('2d');
 //  var ctx_light = document.getElementById("lightChart").getContext('2d');
 
 
-  var climatChart = new Chart(ctx_clima, {
+
+  var climatChart1 = new Chart(ctx_clima1, {
     type: 'line',
-    data: <?php echo json_encode($clima_data);?>,
+    data: <?php echo json_encode($temperature_data);?>,
     options: {
       scales: {
         yAxes: [{
@@ -110,9 +138,87 @@ include('db.php');
       }
     }
   });
-  var waterChart = new Chart(ctx_water, {
+  var climatChart2 = new Chart(ctx_clima2, {
     type: 'line',
-    data: <?php echo json_encode($water_data);?>,
+    data: <?php echo json_encode($humidity_data);?>,
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero:true
+          }
+        }]
+      }
+    }
+  });
+  var climatChart1a = new Chart(ctx_clima1a, {
+    type: 'line',
+    data: <?php echo json_encode($temperature_detailed_data);?>,
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero:true
+          }
+        }]
+      }
+    }
+  });
+  var climatChart2a = new Chart(ctx_clima2a, {
+    type: 'line',
+    data: <?php echo json_encode($humidity_detailed_data);?>,
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero:true
+          }
+        }]
+      }
+    }
+  });
+  var waterChart1 = new Chart(ctx_water1, {
+    type: 'line',
+    data: <?php echo json_encode($water_1_data);?>,
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero:true
+          }
+        }]
+      }
+    }
+  });
+  var waterChart2 = new Chart(ctx_water2, {
+    type: 'line',
+    data: <?php echo json_encode($water_2_data);?>,
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero:true
+          }
+        }]
+      }
+    }
+  });
+  var waterChart3 = new Chart(ctx_water3, {
+    type: 'line',
+    data: <?php echo json_encode($water_3_data);?>,
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero:true
+          }
+        }]
+      }
+    }
+  });
+  var waterChart4 = new Chart(ctx_water4, {
+    type: 'line',
+    data: <?php echo json_encode($water_4_data);?>,
     options: {
       scales: {
         yAxes: [{
