@@ -7,6 +7,10 @@
     </style>
 </head>
 <body>
+<a href="http://fastaccess.ddns.net">Back</a>
+<video style="text-align: center; max-height: 300px;" controls="controls">
+    <source src="http://fastaccess.ddns.net/cam//live.mp4" type='video/mp4;'>
+</video><br>
 
 <?php
 $dir = '/home/pi/html/cam/live/';

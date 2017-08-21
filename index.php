@@ -85,7 +85,7 @@ include('db.php');
 
     <div class="last_view">
         <a href="<?php echo $shot['src'];?>" target="_blank"><img src="<?php echo $shot['src'];?>" title="<?php echo $shot['title'];?>"></a><br/>
-        <a href="<?php echo $video['href'];?>">Get latest timelapse view</a>
+        <a href="http://fastaccess.ddns.net/live.php">Live List</a>
     </div>
     <div class="clear"></div>
 
