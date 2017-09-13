@@ -1,0 +1,201 @@
+/*GEneral*/
+body{
+    font-size: 14px;
+    font-family: Courier;
+    color: #0a0a0a;
+    /*background-color: #fffba1;*/
+}
+h3,h4{
+    text-align: center;
+}
+a {
+    font-size: 14px;
+    font-family: Courier;
+    color: #0c7200;
+    font-weight: bold;
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+.container{
+    width: 1024px;
+    margin: 10px auto;
+}
+.left{
+    float: left;
+}
+.right{
+    float: right;
+}
+.clear{
+    clear: both;
+}
+
+/*Header*/
+.header{
+    border-bottom: 2px solid black;
+    padding: 10px 0;
+}
+.header .logo {
+    font-size: 62px;
+    color: #a31025;
+    font-weight: bold;
+    height: 63px;
+    line-height: 40px;
+}
+.header .afterlogo {
+    height: 40px;
+}
+.header .afterlogo .top{
+    font-size: 26px;
+    line-height: 20px;
+    color: #a31025;
+    font-weight: bold;
+}
+.header .afterlogo .bottom{
+    font-size: 20px;
+    line-height: 20px;
+    color: #0a0a0a;
+    font-weight: 100;
+}
+
+.menu{
+    height: 30px;
+    margin-bottom: 40px;
+}
+.menu a{
+    display: inline-block;
+    width: 163px;
+    text-align: center;
+    padding: 8px 0;
+}
+.menu a:hover{
+    text-decoration: none;
+    background-color: #0c7200;
+    color: white;
+    font-weight: bold;
+}
+.menu a.selected{
+    border-bottom: 2px solid #0c7200;
+}
+.menu a.highlight{
+    color: #a31025;
+    width: 166px;
+}
+.menu a.highlight:hover{
+    background-color: #a31025;
+    color: white;
+}
+
+/*Content*/
+
+.climatchart{
+    float: left;
+    width: 30%;
+}
+
+.light_status {
+    float: left;
+    width: 25%;
+    line-height: 20px;
+}
+.light_status .message{
+    font-weight: bold;
+}
+.light_status .green{
+    color: green;
+}
+.light_status .red{
+    color: red;
+}
+.temperature_status {
+    width: 230px;
+}
+.humidity_status{
+    width: 530px;
+    text-align: center;
+}
+
+
+.waterlog{
+    float: left;
+    width: 25%;
+    line-height: 20px;
+}
+.waterlog .time{
+    font-weight: bold;
+    font-size: 13px;
+}
+.waterlog .message{
+    font-size: 13px;
+}
+
+.water{
+    width: 25%;
+    text-align: center;
+}
+.dry{
+    width: 50%;
+}
+.dry .drychart{
+    float: left;
+    width: 50%;
+    height: 200px;
+}
+
+
+a.btn{
+    display: inline-block;
+    padding: 3px 6px;
+    background: #fcf6d2;
+    border: 1px solid #dad78f;
+    color: #1c291d;
+    margin: 10px 0px 0px 50px;
+}
+a.btn.green{
+    background: #9adb9c;
+}
+a.btn.red{
+    background: #db6c67;
+}
+.last_view{
+    text-align: center;
+    float: left;
+    width: 70%;
+}
+.last_view img{
+    max-height: 500px;
+    height: 500px;
+}
+
+/*footer*/
+.footermenu{
+    width: 1024px;
+    margin: 10px auto;
+    text-align: right;
+}
+.footermenu a{
+    padding: 0 20px;
+    font-weight: bold;
+}
+.copyright {
+    text-align: center;
+    font-size: 12px;
+    line-height: 15px;
+    color: #575757;
+}
+
+
+/*LIve view*/
+.pic{
+    max-height: 200px;
+}
+
+.photos {
+    height: 200px;
+}
+.photos button{
+    background-color: greenyellow;
+}

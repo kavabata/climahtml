@@ -1,34 +1,57 @@
-<html>
-<head>
-    <style>
-        .pic{
-            max-width: 100px;
-        }
-    </style>
-</head>
-<body>
-<a href="http://fastaccess.ddns.net">Back</a>
-<video style="text-align: center; max-height: 300px;" controls="controls">
-    <source src="http://fastaccess.ddns.net/cam//live.mp4" type='video/mp4;'>
-</video><br>
-
 <?php
-$dir = '/home/pi/html/cam/live/';
-$names = [];
+error_reporting(E_ALL);
+ini_set('display_errors',1);
+include('config.php');
+include('latestshot.php');
+include('db.php');
+
+
+$mode = 'live';
+
+$dir = $photo_path . 'live/';
+$photos = [];
 if (is_dir($dir)) {
-    $resultname = '';
     if ($dh = opendir($dir)) {
         while (($file = readdir($dh)) !== false) {
-           $name = basename($file,'.jpg');
-           array_push($names, $name);
+            $name = basename($file,'.jpg');
+            array_push($photos, $name);
         }
         closedir($dh);
     }
 }
-rsort($names);
-foreach ($names as $name) {
-    echo '<a href="http://fastaccess.ddns.net/cam/live/'.$name.'.jpg" target="_blank" title="'.$name.'"><img src="http://fastaccess.ddns.net/cam/live/'.$name.'.jpg" class="pic"/></a>';
-}
-?>
-</body>
-</html>
+rsort($photos);
+$photos = array_slice($photos, 0, 24);
+
+
+include('header.php');?>
+
+<div class="last_view">
+    <a href="<?php echo $shot['src'];?>" target="_blank"><img src="<?php echo $shot['src'];?>" title="<?php echo $shot['title'];?>"></a>
+</div>
+<div class="clear"></div>
+
+
+<div class="photos">
+<?php
+foreach ($photos as $name) {
+    echo '<div>
+        <a href="http://fastaccess.ddns.net/cam/live/' . $name . '.jpg" target="_blank" title="' . $name . '">
+            <img src="http://fastaccess.ddns.net/cam/live/' . $name . '.jpg" class="pic"/>
+        </a>
+    </div>';
+} ?>
+</div>
+<div class="clear"></div>
+
+
+<script>
+  $(document).ready(function(){
+      $('.photos').slick({
+        infinite: true,
+        slidesToShow: 3,
+        slidesToScroll: 3
+      });
+  });
+</script>
+
+<?php include('footer.php');

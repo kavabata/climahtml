@@ -199,8 +199,9 @@ $log_query = "select
      l.message,
     l.created 
 from logs l
+where action = 'water'
 order by created DESC 
 limit 10";
-$log_result = $db->query($log_query);
+$waterlog_result = $db->query($log_query);
 
 
