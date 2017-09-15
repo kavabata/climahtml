@@ -12,7 +12,7 @@ jQuery('document').ready(function () {
         "decimals": "1",
         "numberSuffix": "°C",
         "showhovereffect": "1",
-        "thmFillColor": "#008ee4",
+        "thmFillColor": "#06e404",
         "thmOriginX": "100",
         "bgcolor": "FFFFFF",
         "showborder": "0",

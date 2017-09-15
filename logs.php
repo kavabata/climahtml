@@ -38,18 +38,14 @@ include('header.php');?>
     <canvas id="climatChart2" width="800" height="100"></canvas>
 </div>
 
-<div class="water graph">
+<div class=" graph">
     <h3>Water Inside</h3>
-    <canvas id="waterChart1" width="800" height="50"></canvas>
-    <canvas id="waterChart2" width="800" height="50"></canvas>
-    <canvas id="waterChart3" width="800" height="50"></canvas>
-    <canvas id="waterChart4" width="800" height="50"></canvas>
+    <canvas id="waterChart1" width="800" height="100"></canvas>
+    <canvas id="waterChart2" width="800" height="100"></canvas>
+    <canvas id="waterChart3" width="800" height="100"></canvas>
+    <canvas id="waterChart4" width="800" height="100"></canvas>
 </div>
 
-<div class="light graph">
-    <h3>Dry Detectors</h3>
-    <canvas id="lightChart" width="800" height="400"></canvas>
-</div>
 <script>
   var ctx_clima1 = document.getElementById("climatChart1").getContext('2d');
   var ctx_clima1a = document.getElementById("climatChart1a").getContext('2d');

@@ -9,7 +9,7 @@ order by id desc limit 1;";
 $pump_result = $db->query($pump_query);
 $row = $pump_result->fetch_object();
 
-if ((time() - strtotime($row->created)) > 60) {
+if ((time() - strtotime($row->created)) > 10) {
     $output = shell_exec('sudo python /home/pi/clima/water.py 2>&1');
     echo ($output);
 } else {

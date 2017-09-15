@@ -2,59 +2,37 @@
 error_reporting(E_ALL);
 ini_set('display_errors',1);
 
-include('latestshot.php');
-include('db.php');
+//include('latestshot.php');
+//include('db.php');
 
 
 $mode = 'home';
+include "include/common.php";
+
+
+$box_id = 1;
 include('header.php');
 ?>
 
-<div id="humidity-chart"></div>
+<div id="dialog"></div>
 
+<input type="button" class="openBoxConfig" value="Open Form" data-id="1">
+<input type="button" class="openBoxConfig" value="Open Form" data-id="2">
+<input type="button" class="openBoxConfig" value="Open Form" data-id="3">
+<input type="button" class="openBoxConfig" value="Open Form" data-id="4">
 <script>
-jQuery('document').ready(function () {
 
+    $(".openBoxConfig").on('click',function(){
+      var box_id = $(this).data('id');
+      $("#dialog").load('box.php?box=' + box_id, function(){
+        $( "#dialog" ).dialog({
+          width: 450,
+          modal: true,
+          title: 'Box Configuration: ' + box_id + ' ['
+          + config.box.name[box_id] + ']'
+        });
+      })
+    });
 
-  $("#humidity-chart").insertFusionCharts({
-    type: "hled",
-    width: "300",
-    height: "100",
-    dataFormat: "json",
-    dataSource: {
-      "chart": {
-        "editmode": "0",
-        "lowerlimit": "0",
-        "upperlimit": "100",
-        "bgcolor": "FFFFFF",
-        "showborder": "0",
-        "gaugestartangle": "180",
-        "gaugeendangle": "0",
-        "manageresize": "0"
-      },
-      "colorrange": {
-        "color": [
-          {
-            "minvalue": "0",
-            "maxvalue": "50",
-            "code": "#91A3A1"
-          },
-          {
-            "minvalue": "50",
-            "maxvalue": "75",
-            "code": "#387AA3"
-          },
-          {
-            "minvalue": "75",
-            "maxvalue": "100",
-            "code": "#0300A3"
-          }
-        ]
-      },
-      "value": 33
-    }
-  });
-
-});
 </script>
 <?php include('footer.php');

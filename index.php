@@ -1,6 +1,15 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors',1);
+
+include_once 'include/common.php';
+
+
+$dry = new dry();
+
+$dry_state = $dry->get_sensors_avg();
+
+
+//die;
+
 
 include('latestshot.php');
 include('db.php');
@@ -20,12 +29,6 @@ $water = [
         'value' => 2100
     ],
 ];
-$dry = [
-    1 => 44,
-    2 => 10,
-    3 => 53,
-    4 => 88
-];
 
 include('header.php');?>
 
@@ -33,7 +36,8 @@ include('header.php');?>
     var temperature = <?php echo $temperature;?>;
     var humidity = <?php echo $humidity;?>;
     var water = <?php echo json_encode($water);?>;
-    var dry = <?php echo json_encode($dry);?>;
+    var dry = <?php echo json_encode($dry_state);?>;
+
 </script>
 
 <div class="main_stats">
@@ -81,26 +85,29 @@ include('header.php');?>
     </div>
     <div class="dry left">
         <h3>BOX DRY</h3>
-        <div class="drychart">
+        <div class="drychart" style="background-color: <?php echo $config->data['box']['color'][1];?>">
             <div id="dry-1-chart"></div><br/>
             <a href="" class="btn">POUR</a>
             <a href="" class="btn green">LOCK</a>
 
         </div>
-        <div class="drychart">
+
+        <div class="drychart" style="background-color: <?php echo $config->data['box']['color'][2];?>">
             <div id="dry-2-chart"></div>
             <br/>
             <a href="" class="btn">POUR</a>
             <a href="" class="btn red">UNLOCK</a>
         </div>
+
         <div class="drychart">
-            <div id="dry-3-chart"></div>
+            <div id="dry-4-chart"></div>
             <br/>
             <a href="" class="btn">POUR</a>
             <a href="" class="btn green">LOCK</a>
         </div>
+
         <div class="drychart">
-            <div id="dry-4-chart"></div>
+            <div id="dry-3-chart"></div>
             <br/>
             <a href="" class="btn">POUR</a>
             <a href="" class="btn green">LOCK</a>

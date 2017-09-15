@@ -141,8 +141,9 @@ a:hover{
 }
 .dry .drychart{
     float: left;
-    width: 50%;
+    width: 200px;
     height: 200px;
+    margin: 20px;
 }
 
 
@@ -168,7 +169,10 @@ a.btn.red{
 .last_view img{
     max-height: 500px;
     height: 500px;
+    color: rgba(207, 250, 34, 0.34);
 }
+
+
 
 /*footer*/
 .footermenu{
@@ -198,4 +202,34 @@ a.btn.red{
 }
 .photos button{
     background-color: greenyellow;
+}
+
+
+
+/*Dialog*/
+
+.dialogConfigForm select,
+.dialogConfigForm input{
+    width: 100%;
+}
+
+.dialogConfigForm input.cancel{
+    background-color: #e4bfbb;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #e46563;
+    cursor: pointer;
+}
+.dialogConfigForm input.cancel:hover{
+    background-color: #e46563;
+}
+.dialogConfigForm input.submit{
+    background-color: #bce4bc;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #77e47a;
+    cursor: pointer;
+}
+.dialogConfigForm input.submit:hover{
+    background-color: #77e47a;
 }
