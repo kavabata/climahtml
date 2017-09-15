@@ -112,6 +112,7 @@ a:hover{
 }
 .temperature_status {
     width: 230px;
+    text-align: center;
 }
 .humidity_status{
     width: 530px;

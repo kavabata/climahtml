@@ -36,6 +36,7 @@ include('header.php');?>
     <div class="temperature_status left">
         <h3>TEMPERATURE</h3>
         <div id="temperature-chart"></div>
+        <a href="javascript:void(0)" class="btn config">CONFIG CLIMAT</a>
     </div>
     <div class="humidity_status left">
         <h3>HUMIDITY</h3>

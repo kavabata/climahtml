@@ -150,4 +150,14 @@ function updateClima() {
 }
 jQuery('document').ready(function () {
   setClima();
+
+  $('.temperature_status .config').on('click',function(){
+    $("#dialog").load('clima.php', function(){
+      $( "#dialog" ).dialog({
+        width: 450,
+        modal: true,
+        title: 'Climat Configuration'
+      });
+    })
+  });
 });
