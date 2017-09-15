@@ -6,16 +6,16 @@ $box_id = !empty($_REQUEST['id']) && is_numeric($_REQUEST['id']) && $_REQUEST['i
 	$_REQUEST['id'] : 1;
 
 if (!empty($_POST)) {
-	if (!empty($_POST['status'])) {
+	if (isset($_POST['status'])) {
 		$config->update('box.water.status.' . $box_id, (int)$_POST['status']);
 	}
-	if (!empty($_POST['status'])) {
+	if (isset($_POST['time'])) {
 		$config->update('box.water.time.' . $box_id, (int)$_POST['time']);
 	}
-	if (!empty($_POST['status'])) {
+	if (isset($_POST['limit'])) {
 		$config->update('box.water.limit.' . $box_id, (int)$_POST['limit']);
 	}
-	if (!empty($_POST['status'])) {
+	if (isset($_POST['manual'])) {
 		$config->update('box.water.manual.' . $box_id, (int)$_POST['manual']);
 	}
 	die('success');
@@ -101,9 +101,10 @@ $('#dialogForm').submit(function(e) {
 	{
 	  if (data == 'success') {
 		$('#dialog').dialog('close');
-		alert('Box Configuration Saved');
+        reloadConfig();
+//		alert('Box Configuration Saved');
 	  } else {
-		alert('Something Goes Wrong');
+//		alert('Something Goes Wrong');
 	  }
 	}
   });

@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>Clima v0.2</title>
+    <title>Clima v0.3</title>
     <link href="style.css" type="text/css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
     <script
@@ -17,9 +17,11 @@
 
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
     <script>
       var config = <?php echo json_encode($config->data);?>;
     </script>
+    <script src="js/common.js"></script>
 </head>
 <body>
 
@@ -32,7 +34,7 @@
         </div>
         <div class="right">
             Welcome Master<br/>
-            <?php echo date('H:i:s');?>
+            <span id="climaTime"><?php echo date('H:i:s');?></span>
         </div>
         <div class="clear"></div>
     </div>

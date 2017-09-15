@@ -1,159 +1,179 @@
+function initDryBox() {
+  for (var i = 1; i < 5; i++) {
+    if (config.box.water.status[i] == 1) {
+      $('#dryChart' + i + ' .unlock').hide();
+      $('#dryChart' + i + ' .lock').show();
+    } else {
+      $('#dryChart' + i + ' .lock').hide();
+      $('#dryChart' + i + ' .unlock').show();
+    }
+
+    $("#dry-" + i + "-chart").insertFusionCharts({
+      type: "angulargauge",
+      width: "200",
+      height: "110",
+      dataFormat: "json",
+      dataSource: {
+        "chart": {
+          "editmode": "0",
+          "lowerlimit": "0",
+          "upperlimit": "100",
+          "bgcolor": config.box.color[i],
+          "bgAlpha": "100",
+          "showborder": "0",
+          "gaugestartangle": "180",
+          "gaugeendangle": "0",
+          "manageresize": "0",
+          "showValue": "1"
+        },
+        "colorrange": {
+          "color": [
+            {
+              "minvalue": "0",
+              "maxvalue": config['box']['water']['limit'][i],
+              "code": "#a34d56"
+            },
+            {
+              "minvalue": config['box']['water']['limit'][i],
+              "maxvalue": parseInt(config['box']['water']['limit'][i]) + parseInt((100 - config['box']['water']['limit'][i])/2),
+              "code": "#a1a350"
+            },
+            {
+              "minvalue": parseInt(config['box']['water']['limit'][i]) + parseInt((100 - config['box']['water']['limit'][i])/2),
+              "maxvalue": "100",
+              "code": "#48a35a"
+            }
+          ]
+        },
+        "dials": {
+          "dial": [
+            {
+              "editmode": "0",
+              "value": dry[i],
+              "rearextension": "40"
+            }
+          ]
+        }
+      }
+    });
+  }
+}
+
+function updateDryBox() {
+  for (var i = 1; i < 5; i++) {
+    if (config.box.water.status[i] == 1) {
+      $('#dryChart' + i + ' .unlock').hide();
+      $('#dryChart' + i + ' .lock').show();
+    } else {
+      $('#dryChart' + i + ' .lock').hide();
+      $('#dryChart' + i + ' .unlock').show();
+    }
+
+    $("#dry-" + i + "-chart").updateFusionCharts({
+      dataSource: {
+        "chart": {
+          "editmode": "0",
+          "lowerlimit": "0",
+          "upperlimit": "100",
+          "bgcolor": config.box.color[i],
+          "bgAlpha": "100",
+          "showborder": "0",
+          "gaugestartangle": "180",
+          "gaugeendangle": "0",
+          "manageresize": "0",
+          "showValue": "1"
+        },
+        "colorrange": {
+          "color": [
+            {
+              "minvalue": "0",
+              "maxvalue": config['box']['water']['limit'][i],
+              "code": "#a34d56"
+            },
+            {
+              "minvalue": config['box']['water']['limit'][i],
+              "maxvalue": parseInt(config['box']['water']['limit'][i]) + parseInt((100 - config['box']['water']['limit'][i])/2),
+              "code": "#a1a350"
+            },
+            {
+              "minvalue": parseInt(config['box']['water']['limit'][i]) + parseInt((100 - config['box']['water']['limit'][i])/2),
+              "maxvalue": "100",
+              "code": "#48a35a"
+            }
+          ]
+        },
+        "dials": {
+          "dial": [
+            {
+              "editmode": "0",
+              "value": dry[i],
+              "rearextension": "40"
+            }
+          ]
+        }
+      }
+    });
+  }
+}
+
 jQuery('document').ready(function () {
-  $("#dry-1-chart").insertFusionCharts({
-    type: "angulargauge",
-    width: "200",
-    height: "100",
-    dataFormat: "json",
-    dataSource: {
-      "chart": {
-        "editmode": "0",
-        "lowerlimit": "0",
-        "upperlimit": "100",
-        "bgcolor": config.box.color[1],
-        "showborder": "0",
-        "gaugestartangle": "180",
-        "gaugeendangle": "0",
-        "manageresize": "0"
-      },
-      "colorrange": {
-        "color": [
-          {
-            "minvalue": "0",
-            "maxvalue": config['box']['water']['limit']['1'],
-            "code": "#a34d56"
-          },
-          {
-            "minvalue": config['box']['water']['limit']['1'],
-            "maxvalue": parseInt(config['box']['water']['limit']['1']) + parseInt((100 - config['box']['water']['limit']['1'])/2),
-            "code": "#a1a350"
-          },
-          {
-            "minvalue": parseInt(config['box']['water']['limit']['1']) + parseInt((100 - config['box']['water']['limit']['1'])/2),
-            "maxvalue": "100",
-            "code": "#48a35a"
-          }
-        ]
-      },
-      "value": dry[1]
-    }
+
+  $('.drychart .config').on('click',function(){
+    var box_id = $(this).data('id');
+    $("#dialog").load('box.php?id=' + box_id, function(){
+      $( "#dialog" ).dialog({
+        width: 450,
+        modal: true,
+        title: 'Box Configuration: ' + box_id + ' ['
+        + config.box.name[box_id] + ']'
+      });
+    })
   });
 
-  $("#dry-2-chart").insertFusionCharts({
-    type: "angulargauge",
-    width: "200",
-    height: "100",
-    dataFormat: "json",
-    dataSource: {
-      "chart": {
-        "editmode": "0",
-        "lowerlimit": "0",
-        "upperlimit": "100",
-        "bgcolor": "FFFFFF",
-        "showborder": "0",
-        "gaugestartangle": "180",
-        "gaugeendangle": "0",
-        "manageresize": "0",
-        "gaugestartangle": "280",
+  $('.drychart .lock').on('click',function(){
+    var box_id = $(this).data('id');
+    $.ajax({
+      type: "POST",
+      url: 'box.php',
+      data: {
+        id: box_id,
+        status: 0
       },
-      "colorrange": {
-        "color": [
-          {
-            "minvalue": "0",
-            "maxvalue": config['box']['water']['limit']['2'],
-            "code": "#a34d56"
-          },
-          {
-            "minvalue": config['box']['water']['limit']['2'],
-            "maxvalue": parseInt(config['box']['water']['limit']['2']) + parseInt((100 - config['box']['water']['limit']['2'])/2),
-            "code": "#a1a350"
-          },
-          {
-            "minvalue": parseInt(config['box']['water']['limit']['2']) + parseInt((100 - config['box']['water']['limit']['2'])/2),
-            "maxvalue": "100",
-            "code": "#48a35a"
-          }
-        ]
-      },
-      "value": dry[2]
-    }
+      success: function (data) {
+        reloadConfig();
+      }
+    });
   });
 
-  $("#dry-3-chart").insertFusionCharts({
-    type: "hled",
-    width: "250",
-    height: "100",
-    dataFormat: "json",
-    dataSource: {
-      "chart": {
-        "editmode": "0",
-        "lowerlimit": "0",
-        "upperlimit": "100",
-        "bgcolor": "FFFFFF",
-        "showborder": "0",
-        "gaugestartangle": "180",
-        "gaugeendangle": "0",
-        "manageresize": "0"
+  $('.drychart .unlock').on('click',function(){
+    var box_id = $(this).data('id');
+    $.ajax({
+      type: "POST",
+      url: 'box.php',
+      data: {
+        id: box_id,
+        status: 1
       },
-      "colorrange": {
-        "color": [
-          {
-            "minvalue": "0",
-            "maxvalue": config['box']['water']['limit']['3'],
-            "code": "#a34d56"
-          },
-          {
-            "minvalue": config['box']['water']['limit']['3'],
-            "maxvalue": parseInt(config['box']['water']['limit']['3']) + parseInt((100 - config['box']['water']['limit']['3'])/2),
-            "code": "#a1a350"
-          },
-          {
-            "minvalue": parseInt(config['box']['water']['limit']['3']) + parseInt((100 - config['box']['water']['limit']['3'])/2),
-            "maxvalue": "100",
-            "code": "#48a35a"
-          }
-        ]
-      },
-      "value": dry[3]
-    }
+      success: function (data) {
+        reloadConfig();
+      }
+    });
   });
 
-  $("#dry-4-chart").insertFusionCharts({
-    type: "hled",
-    width: "250",
-    height: "100",
-    dataFormat: "json",
-    dataSource: {
-      "chart": {
-        "editmode": "0",
-        "lowerlimit": "0",
-        "upperlimit": "100",
-        "bgcolor": "FFFFFF",
-        "showborder": "0",
-        "gaugestartangle": "180",
-        "gaugeendangle": "0",
-        "manageresize": "0"
+  $('.drychart .pour').on('click',function(){
+    var box_id = $(this).data('id');
+    $.ajax({
+      type: "POST",
+      url: 'pour.php',
+      data: {
+        id: box_id
       },
-      "colorrange": {
-        "color": [
-          {
-            "minvalue": "0",
-            "maxvalue": config['box']['water']['limit']['4'],
-            "code": "#a34d56"
-          },
-          {
-            "minvalue": config['box']['water']['limit']['4'],
-            "maxvalue": parseInt(config['box']['water']['limit']['4']) + parseInt((100 - config['box']['water']['limit']['4'])/2),
-            "code": "#a1a350"
-          },
-          {
-            "minvalue": parseInt(config['box']['water']['limit']['4']) + parseInt((100 - config['box']['water']['limit']['4'])/2),
-            "maxvalue": "100",
-            "code": "#48a35a"
-          }
-        ]
-      },
-      "value": dry[4]
-    }
+      success: function (data) {
+        alert(data);
+      }
+    });
   });
-  console.log();
+
+  initDryBox();
+
 });

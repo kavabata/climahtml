@@ -193,15 +193,4 @@ while ($row = $light_result->fetch_object()){
 }
 
 
-$log_query = "select
-    l.id,
-    l.action,
-     l.message,
-    l.created 
-from logs l
-where action = 'water'
-order by created DESC 
-limit 10";
-$waterlog_result = $db->query($log_query);
-
 

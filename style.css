@@ -124,6 +124,9 @@ a:hover{
     width: 25%;
     line-height: 20px;
 }
+.waterlog .total{
+    margin-bottom: 20px;
+}
 .waterlog .time{
     font-weight: bold;
     font-size: 13px;
@@ -141,19 +144,22 @@ a:hover{
 }
 .dry .drychart{
     float: left;
-    width: 200px;
+    width: 205px;
     height: 200px;
-    margin: 20px;
+    margin: 10px;
 }
-
-
+.dry .drychart h4{
+    margin: 10px 0;
+}
+.dry .drychart a{
+    margin: 0 0 0 5px;
+}
 a.btn{
     display: inline-block;
     padding: 3px 6px;
     background: #fcf6d2;
     border: 1px solid #dad78f;
     color: #1c291d;
-    margin: 10px 0px 0px 50px;
 }
 a.btn.green{
     background: #9adb9c;
@@ -169,7 +175,7 @@ a.btn.red{
 .last_view img{
     max-height: 500px;
     height: 500px;
-    color: rgba(207, 250, 34, 0.34);
+    color: rgba(250, 195, 5, 0.34);
 }
 
 

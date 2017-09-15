@@ -1,9 +1,11 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors',1);
-include('config.php');
+include_once 'include/common.php';
+
+$photo_path = $config->data['general']['path']['cam'];
+$url = $config->data['general']['url'];
+
+
 include('latestshot.php');
-include('db.php');
 
 
 $mode = 'live';
