@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>Clima v0.3</title>
+    <title>Clima v1.0</title>
     <link href="style.css" type="text/css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
     <script

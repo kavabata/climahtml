@@ -76,19 +76,6 @@ include('header.php');?>
     </div>
     <div class="dry left">
         <h3>BOX DRY</h3>
-        <div class="drychart" id="dryChart1" style="background-color: <?php echo $config->data['box']['color'][1];?>">
-            <h4>BOX 1 [<?php echo $config->data['box']['name'][1];?>]</h4>
-            <div id="dry-1-chart"></div><br/>
-            <a href="javascript:void(0)" class="btn pour" data-id="1">POUR</a><a href="javascript:void(0)" class="btn green lock" data-id="1">LOCK</a><a href="javascript:void(0)" class="btn red unlock" data-id="1">UNLOCK</a><a href="javascript:void(0)" class="btn config" data-id="1">CONFIG</a>
-        </div>
-
-        <div class="drychart" id="dryChart2" style="background-color: <?php echo $config->data['box']['color'][2];?>">
-            <h4>BOX 2 [<?php echo $config->data['box']['name'][2];?>]</h4>
-            <div id="dry-2-chart"></div>
-            <br/>
-            <a href="javascript:void(0)" class="btn pour" data-id="2">POUR</a><a href="javascript:void(0)" class="btn green lock" data-id="2">LOCK</a><a href="javascript:void(0)" class="btn red unlock" data-id="2">UNLOCK</a><a href="javascript:void(0)" class="btn config" data-id="2">CONFIG</a>
-        </div>
-
         <div class="drychart" id="dryChart4" style="background-color: <?php echo $config->data['box']['color'][4];?>">
             <h4>BOX 4 [<?php echo $config->data['box']['name'][4];?>]</h4>
             <div id="dry-4-chart"></div>
@@ -96,11 +83,25 @@ include('header.php');?>
             <a href="javascript:void(0)" class="btn pour" data-id="4">POUR</a><a href="javascript:void(0)" class="btn green lock" data-id="4">LOCK</a><a href="javascript:void(0)" class="btn red unlock" data-id="4">UNLOCK</a><a href="javascript:void(0)" class="btn config" data-id="4">CONFIG</a>
         </div>
 
+        <div class="drychart" id="dryChart1" style="background-color: <?php echo $config->data['box']['color'][1];?>">
+            <h4>BOX 1 [<?php echo $config->data['box']['name'][1];?>]</h4>
+            <div id="dry-1-chart"></div><br/>
+            <a href="javascript:void(0)" class="btn pour" data-id="1">POUR</a><a href="javascript:void(0)" class="btn green lock" data-id="1">LOCK</a><a href="javascript:void(0)" class="btn red unlock" data-id="1">UNLOCK</a><a href="javascript:void(0)" class="btn config" data-id="1">CONFIG</a>
+        </div>
+
+
         <div class="drychart" id="dryChart3" style="background-color: <?php echo $config->data['box']['color'][3];?>">
             <h4>BOX 3 [<?php echo $config->data['box']['name'][3];?>]</h4>
             <div id="dry-3-chart"></div>
             <br/>
             <a href="javascript:void(0)" class="btn pour" data-id="3">POUR</a><a href="javascript:void(0)" class="btn green lock" data-id="3">LOCK</a><a href="javascript:void(0)" class="btn red unlock" data-id="3">UNLOCK</a><a href="javascript:void(0)" class="btn config" data-id="3">CONFIG</a>
+        </div>
+
+        <div class="drychart" id="dryChart2" style="background-color: <?php echo $config->data['box']['color'][2];?>">
+            <h4>BOX 2 [<?php echo $config->data['box']['name'][2];?>]</h4>
+            <div id="dry-2-chart"></div>
+            <br/>
+            <a href="javascript:void(0)" class="btn pour" data-id="2">POUR</a><a href="javascript:void(0)" class="btn green lock" data-id="2">LOCK</a><a href="javascript:void(0)" class="btn red unlock" data-id="2">UNLOCK</a><a href="javascript:void(0)" class="btn config" data-id="2">CONFIG</a>
         </div>
     </div>
     <div class="clear"></div>

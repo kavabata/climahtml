@@ -45,7 +45,7 @@ if (!empty($_POST)) {
 					<?php for($i=0; $i <= 60; $i++):?>
 						<option value="<?php echo $i;?>"
 							<?php echo ($i == $config->data['box']['water']['time'][$box_id] ? 'selected' : '');?>>
-							<?php echo $i;?> sec (<?php echo $i * 10;?> ml)
+							<?php echo $i;?> sec (<?php echo $i * $config->data['can']['water'][1];?> ml)
 						</option>
 					<?php endfor;?>
 				</select>
@@ -73,7 +73,7 @@ if (!empty($_POST)) {
 							<?php if ($i == 0): ?>
 								Disabled
 							<?php else: ?>
-								<?php echo $i;?> sec (<?php echo $i * 10;?> ml)
+								<?php echo $i;?> sec (<?php echo $i * $config->data['can']['water'][1];?> ml)
 							<?php endif; ?>
 						</option>
 					<?php endfor;?>

@@ -15,7 +15,7 @@ class water extends db{
 	function get_latest($hours = 5) {
 		$query = "SELECT valve, delay, volume, created FROM water
 			ORDER BY id DESC
-			LIMIT 20";
+			LIMIT 16";
 
 		return $this->query($query);
 	}
