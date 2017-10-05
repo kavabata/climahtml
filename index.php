@@ -71,8 +71,8 @@ include('header.php');?>
         <h3>WATER</h3>
         <div class="waterchart" id="water-chart"></div>
         <a href="javascript:void(0)" class="btn config" data-id="1">CONFIG BLOOM</a><br><br>
-        <div class="waterchart" id="water-bloom-chart"></div>
-        <a href="javascript:void(0)" class="btn config" data-id="2">CONFIG GROW</a>
+        <!--div class="waterchart" id="water-bloom-chart"></div>
+        <a href="javascript:void(0)" class="btn config" data-id="2">CONFIG GROW</a-->
     </div>
     <div class="dry left">
         <h3>BOX DRY</h3>

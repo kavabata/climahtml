@@ -13,7 +13,7 @@ function initWater() {
   $("#water-chart").insertFusionCharts({
     type: "cylinder",
     width: "250",
-    height: "180",
+    height: "390",
     dataFormat: "json",
     dataSource: {
       "chart": {
@@ -31,7 +31,7 @@ function initWater() {
       "value":config.can.left[1]
     }
   });
-
+/*
   $("#water-bloom-chart").insertFusionCharts({
     type: "cylinder",
     width: "250",
@@ -52,7 +52,7 @@ function initWater() {
       },
       "value": config.can.left[2]
     }
-  });
+  });*/
 }
 
 function updateWater() {
@@ -73,7 +73,7 @@ function updateWater() {
       "value":config.can.left[1]
     }
   });
-
+/*
   $("#water-bloom-chart").updateFusionCharts({
     dataSource: {
       "chart": {
@@ -91,6 +91,7 @@ function updateWater() {
       "value": config.can.left[2]
     }
   });
+  */
 }
 
 jQuery('document').ready(function () {

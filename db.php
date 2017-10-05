@@ -10,11 +10,11 @@ $clima_query = "select
   round(sum(humidity)/count(*), 2) as humidity,
   concat(substring(date_format(created, '%d %H:%i'), 1, 7), '0') as st 
 from temperature 
-where created > date_sub(now(), interval 2 day)
+where created > date_sub(now(), interval 3 day)
 and humidity <101
 group by concat(date_format(created, '%Y-%m-%d %H:'), round(date_format(created, '%i')/20) * 20)
 order by created desc
-limit 100;";
+limit 140;";
 $clima_result = $db->query($clima_query);
 $temperature_data = [
     'labels' => [],
@@ -22,9 +22,21 @@ $temperature_data = [
         0 => [
             'label' => '',
             'data' => [],
-            'backgroundColor' => ['rgba(128, 99, 111, 0.2)'],
+            'backgroundColor' => ['rgba(128, 99, 111, 0.1)'],
             'borderColor' => ['rgba(128, 99, 111, 1)']
-        ]
+        ],
+		1 => [
+			'label' => '',
+			'data' => [],
+			'backgroundColor' => ['rgba(128, 140, 190, 0.2)'],
+			'borderColor' => ['rgba(128, 140, 190, 1)']
+		],
+		2 => [
+			'label' => '',
+			'data' => [],
+			'backgroundColor' => ['rgba(128, 200, 230, 0.3)'],
+			'borderColor' => ['rgba(128, 200, 230, 1)']
+		]
     ]
 ];
 $humidity_data = [

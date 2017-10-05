@@ -45,5 +45,5 @@
         <a href="/cam/live.mp4" target="_blank">TIME LAPS</a>
         <a href="/logs.php" class="<?php echo $mode == 'logs' ? 'selected' : '';?>">LOGS</a>
         <a href="/control.php" class="<?php echo $mode == 'dash' ? 'selected' : '';?>">CONTROL</a>
-        <a href="/silent.php" class="highlight">SILENT MODE</a>
+        <a href="/sleep.php" <?php echo $config->data['general']['sleep'] == '1' ? 'class="highlight"' : '';?> id="sleep">SILENT MODE</a>
     </div>
